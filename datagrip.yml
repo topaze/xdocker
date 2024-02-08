@@ -1,0 +1,15 @@
+version: "3"
+services:
+  app:
+    image: firefox-xdock:latest
+    build: .
+    environment:
+      - DISPLAY=${DISPLAY}
+      - XAUTH_TOKEN=${XAUTH_TOKEN}
+      - EXEC_PATH=${EXEC_PATH}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./datagrip.sh:/root/datagrip.sh
+    command:
+      - "/root/datagrip.sh"
+    network_mode: host
