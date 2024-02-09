@@ -7,9 +7,11 @@ services:
       - DISPLAY=${DISPLAY}
       - XAUTH_TOKEN=${XAUTH_TOKEN}
       - EXEC_PATH=${EXEC_PATH}
+    user: "1000:1000"
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ./datagrip.sh:/root/datagrip.sh
+      - ./data/datagrip:/home/datagrip
+      - ./datagrip.sh:/home/datagrip/bin/datagrip.sh      
     command:
-      - "/root/datagrip.sh"
+      - "/home/datagrip/bin/datagrip.sh"
     network_mode: host
